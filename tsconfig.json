@@ -28,3 +28,52 @@
     "strictTemplates": true
   }
 }
+// export class AppComponent {
+//   title = 'formArray';
+//   name="formArray";
+//   formArray:FormGroup|any;
+
+
+//   constructor (private FormGroup:FormBuilder){
+//     this.formArray = FormGroup.group({
+//       name : [],
+//       address:FormGroup.array([])
+//     })
+//   }
+
+
+//    onsubmit(){
+//      const add = this.formArray.get('address') as FormArray;
+//     add.push(this.FormGroup.group({
+//       street:[],
+//       city:[]
+//     })
+//     )}
+
+
+//    delete(index:number){
+//      const add = this.formArray.get('address') as FormArray;
+//      add.removeAt(index)
+//   }
+// }
+
+// <!-- <h1>{{name}}</h1>
+// <div [formGroup]="formArray">
+//     <div>
+//         <input type="text">
+//     </div>
+//     <div>
+//         <button (click)="onsubmit()">Add</button>
+//     </div>
+
+//     <div *ngFor="let addressGroup of formArray.get('address').controls; let i = index" [formGroup]="addressGroup">
+//         form No: {{i}}
+//         <div>
+//             Street<input type="text" formControlName="street">
+//         </div>
+//         <div>
+//             City<input type="text" formControlName="city">
+//         </div>
+//         <button (click)="delete(i)">Delete - {{i}}</button>
+//     </div>
+// </div> -->

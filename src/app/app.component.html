@@ -6,13 +6,13 @@
         <span class="px-5"><button class="px-5" (click)="addButton()">Add</button></span>
         <div formArrayName="user">
             <div class="card w-50" *ngFor="let user of formArray.controls.user.controls; let i = index"
-                formGroupName= "i">
+                formGroupName="i">
                 <div class="py-5 px-5">
-                    Name <input type="text">
+                    Name <input type="text" formControlName="name">
                     <span class="px-5">
                         <button (click)="removeButton(i)">Remove</button>
                     </span>
-                   
+
                 </div>
                 <div>
                     Designation <input type="text">
@@ -20,32 +20,20 @@
                 <div>
                     Skills
                 </div>
-                
-            </div>
-            <!-- <div formArrayName = "skills">
-                <div *ngFor ="let skill of user.controls.skills.controls; let s = index" formGroupName ="s">
-                    <div>
-                        Skills<input type="text">
-                    <span>
-                        <button >ADD</button>
-                        <button>Delete</button>
-                    </span>
-                    </div>
-                    
-                </div>
-            </div> -->
-        </div>
-        
-        <!-- <div class="py-5 px-5">
-             Name <input type="text"> 
 
-        </div>
-        <div *ngFor="let skillset of formArray.get('skills').controls; let i = index" [formGroup]="skillset">
-            skill:{{i}}
-            <div>
-                skillset <input type="text" formControlName="skill">
+                <div formArrayName="skills">
+                    <div *ngFor="let skill of newSkills(i).controls; let s = index" formGroupName="s">
+                        <div>
+                            Skills <input type="text" formControlName="skill">
+                            <span>
+                                <button (click) ="removeSkill(i,s)">Remove Skill</button>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <button (click) = "addSkill(i)" class="btn btn-success">Add Skill</button>
             </div>
-            <button (click)="removeButton(i)">Remove - {{i}}</button>
-        </div> -->
+        </div>
     </div>
 </form>

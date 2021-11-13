@@ -11,6 +11,8 @@ export class AppComponent {
   title = 'forms';
   name = "Form array";
   formArray: FormGroup | any;
+  text:string ="hi hello";
+  age:number =233;
 
   constructor(private fb: FormBuilder) { }
 

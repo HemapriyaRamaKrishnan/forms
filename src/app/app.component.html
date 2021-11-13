@@ -14,10 +14,10 @@
                     </span>
 
                 </div>
-                <div>
+                <div class="px-5">
                     Designation <input type="text">
                 </div>
-                <div>
+                <div class="px-5">
                     Skills
                 </div>
 
@@ -32,8 +32,21 @@
 
                     </div>
                 </div>
-                <button (click) = "addSkill(i)" class="btn btn-success">Add Skill</button>
+                <div class="px-5">
+                    <button (click) = "addSkill(i)" class="btn btn-success w-25" >Add Skill</button>
+                </div>
+                
             </div>
         </div>
     </div>
 </form>
+{{text |uppercase}}
+<br>
+{{text}}
+<br>
+{{age | percent}}
+<br>
+{{age | currency : 'INR'}}
+<h2>Enter the number:</h2>
+<input type ="number">
+<h2>{{number}} power {{exponent}} is equal to  {{number}}</h2>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {FormBuilder,FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +9,22 @@ import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
 })
 export class LoginComponent implements OnInit {
   name = 'Angular-CRUD';
-
-  constructor() { }
+  eDetails : FormGroup | any ;
+  constructor( private formbuilder:FormBuilder, private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.eDetails = this.formbuilder.group({
+      eID :[''],
+      firstName :[''],
+      lastName :[''],
+      emailId:[''],
+      mobileNo:[''],
+      salary:['']
+    })
   }
+  addEmployees(content:any){
+    this.modalService.open(content);
+  }
+  
 
 }

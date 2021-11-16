@@ -2,25 +2,26 @@
     <div class="col-md-10 mx-auto">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="text-center py-5">{{name}}</h1>
+                <h1 class="text-center py-5"> {{name}} </h1>
             </div>
             <div class="col-md-6 text-center py-5">
-                <button type="button" class="btn btn-success px-5">Add Employees</button>
+                <button type="button" class="btn btn-success px-5" (click)="addEmployees(content)">Add
+                    Employees</button>
             </div>
-            
+
         </div>
-    </div> 
+    </div>
     <div class="col-md-10 mx-auto">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Employee ID</th>
-                    <th> Firstname</th>
-                    <th>LAstname</th>
-                    <th>Email id</th>
-                    <th>Mobile no</th>
-                    <th>Salary</th>
-                    <th>Action</th>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col"> Firstname</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Email id</th>
+                    <th scope="col">Mobile no</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,15 +36,55 @@
                         <span>
                             <button type="button" class="btn btn-warning px-2">Edit</button>
                         </span>
-                        
+
                         <span class="ps-2">
                             <button type="button" class="btn btn-danger">Delete</button>
                         </span>
-                        
+
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
-
+<ng-template #content let-c="close" let-d="dismiss">
+    <form [formGroup]="eDetails">
+        <div class="card p-5">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-primary-title">Employee Details</h4>
+            </div>
+            <div class="py-3">
+                <label for="exampleInputEmail1" class="form-label">Employee ID</label>
+                <input type="text" class="form-control" formcontrolName="eId" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="py-3">
+                <label for="exampleInputEmail1" class="form-label">Firstname</label>
+                <input type="text" class="form-control" formcontrolName="firstName" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="py-3">
+                <label for="exampleInputEmail1" class="form-label">Lastname</label>
+                <input type="text" class="form-control" formcontrolName="lastName" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="py-3">
+                <label for="exampleInputEmail1" class="form-label">Email ID</label>
+                <input type="email" class="form-control" formcontrolName="emailId" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="py-3">
+                <label for="exampleInputEmail1" class="form-label">Mobile no</label>
+                <input type="number" class="form-control" formcontrolName="mobileNo" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="py-3">
+                <label for="exampleInputEmail1" class="form-label">Salary</label>
+                <input type="number" class="form-control" formcontrolName="salary" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="text-end">
+                <span class="px-4 pe-0">
+                    <button type="button" class="btn btn-secondary px-3">Save</button>
+                </span>
+                <span class="px-3 pe-0">
+                    <button type="button" class="btn btn-danger">Cancel</button>
+                </span>
+            </div>
+        </div>
+    </form>
+</ng-template>

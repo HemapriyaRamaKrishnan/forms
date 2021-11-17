@@ -40,7 +40,6 @@
                         <span class="ps-2">
                             <button type="button" class="btn btn-danger">Delete</button>
                         </span>
-
                     </td>
                 </tr>
             </tbody>
@@ -48,41 +47,64 @@
     </div>
 </div>
 <ng-template #content let-c="close" let-d="dismiss">
-    <form [formGroup]="eDetails">
+    <form [formGroup]="eDetails" (ngSubmit)="onSubmit()">
         <div class="card p-5">
             <div class="modal-header">
                 <h4 class="modal-title" id="modal-primary-title">Employee Details</h4>
             </div>
             <div class="py-3">
-                <label for="exampleInputEmail1" class="form-label">Employee ID</label>
-                <input type="text" class="form-control" formcontrolName="eId" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label class="form-label">Employee ID</label>
+                <input type="text" class="form-control" formcontrolName="eId" id="eId">
+                <div *ngIf="submitted && e.eId.errors">
+                    <div *ngIf="e.eId.errors.required" class="text-danger">This Field is
+                        required
+                    </div>
+                </div>
             </div>
             <div class="py-3">
-                <label for="exampleInputEmail1" class="form-label">Firstname</label>
-                <input type="text" class="form-control" formcontrolName="firstName" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label class="form-label">Firstname</label>
+                <input type="text" class="form-control" id="firstName" formcontrolName="firstName">
+                <div *ngIf="submitted && e.firstName.errors" >
+                    <div *ngIf="e.firstName.errors.required" class="text-danger">Firstname is required</div>
+                </div>
             </div>
             <div class="py-3">
-                <label for="exampleInputEmail1" class="form-label">Lastname</label>
-                <input type="text" class="form-control" formcontrolName="lastName" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label class="form-label">Lastname</label>
+                <input type="text" class="form-control" id="lastName" formcontrolName="lastName">
+                <div *ngIf="submitted && e.lastName.errors">
+                    <div *ngIf="e.lastName.errors.required" class="text-danger">Lastname is required</div>
+                </div>
             </div>
             <div class="py-3">
-                <label for="exampleInputEmail1" class="form-label">Email ID</label>
-                <input type="email" class="form-control" formcontrolName="emailId" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label class="form-label">Email ID</label>
+                <input type="email" class="form-control" id="emailId" formcontrolName="emailId">
+                <div *ngIf="submitted && e.emailId.errors">
+                    <div *ngIf="e.emailId.errors.required" class="text-danger">Email Field is required
+                        <div *ngIf="e.emailId.errors.emailId" class="text-danger">Email must be valid</div>
+                    </div>
+                </div>
             </div>
             <div class="py-3">
-                <label for="exampleInputEmail1" class="form-label">Mobile no</label>
-                <input type="number" class="form-control" formcontrolName="mobileNo" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label class="form-label">Mobile no</label>
+                <input type="number" class="form-control" id="mobileNo" formcontrolName="mobileNo">
+                <div *ngIf="submitted && e.mobileNo.errors">
+                    <div *ngIf="e.mobileNo.errors.required" class="text-danger">Mobile no is required</div>
+                    <div *ngIf="e.mobileNo.errors.minlength" class="text-danger">Mobile no should be valid</div>
+                </div>
             </div>
             <div class="py-3">
-                <label for="exampleInputEmail1" class="form-label">Salary</label>
-                <input type="number" class="form-control" formcontrolName="salary" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label class="form-label">Salary</label>
+                <input type="number" class="form-control" id="salary" formcontrolName="salary">
+                <div *ngIf="submitted && e.salary.errors">
+                    <div *ngIf="e.salary.errors.required" class="text-danger">Salary is required</div>
+                </div>
             </div>
             <div class="text-end">
                 <span class="px-4 pe-0">
-                    <button type="button" class="btn btn-secondary px-3">Save</button>
+                    <button type="submit" class="btn btn-secondary px-3">Add</button>
                 </span>
                 <span class="px-3 pe-0">
-                    <button type="button" class="btn btn-danger">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Cancel</button>
                 </span>
             </div>
         </div>

@@ -25,13 +25,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1111</td>
-                    <td>Surya</td>
-                    <td>Kumar</td>
-                    <td>suryakumar@gmail.com</td>
-                    <td>9075472839</td>
-                    <td>14,900</td>
+                <tr *ngFor='let emp of employeeData'>
+                    <td>{{ emp.id}}</td>
+                    <td>{{ emp.firstName}}</td>
+                    <td>{{ emp.lastName}}</td>
+                    <td>{{ emp.email}}</td>
+                    <td>{{ emp.mobileNo}}</td>
+                    <td>{{ emp.salary}}</td>
                     <td>
                         <span>
                             <button type="button" class="btn btn-warning px-2">Edit</button>
@@ -47,66 +47,41 @@
     </div>
 </div>
 <ng-template #content let-c="close" let-d="dismiss">
-    <form [formGroup]="eDetails" (ngSubmit)="onSubmit()">
+    <form [formGroup]="eDetails">
         <div class="card p-5">
             <div class="modal-header">
                 <h4 class="modal-title" id="modal-primary-title">Employee Details</h4>
             </div>
-            <div class="py-3">
-                <label class="form-label">Employee ID</label>
-                <input type="text" class="form-control" formcontrolName="eId" id="eId">
-                <div *ngIf="submitted && e.eId.errors">
-                    <div *ngIf="e.eId.errors.required" class="text-danger">This Field is
-                        required
-                    </div>
-                </div>
-            </div>
+           
             <div class="py-3">
                 <label class="form-label">Firstname</label>
-                <input type="text" class="form-control" id="firstName" formcontrolName="firstName">
-                <div *ngIf="submitted && e.firstName.errors" >
-                    <div *ngIf="e.firstName.errors.required" class="text-danger">Firstname is required</div>
-                </div>
+                <input type="text" class="form-control" id="firstName" formControlName="firstName">
             </div>
             <div class="py-3">
                 <label class="form-label">Lastname</label>
-                <input type="text" class="form-control" id="lastName" formcontrolName="lastName">
-                <div *ngIf="submitted && e.lastName.errors">
-                    <div *ngIf="e.lastName.errors.required" class="text-danger">Lastname is required</div>
-                </div>
+                <input type="text" class="form-control" id="lastName" formControlName="lastName">
             </div>
             <div class="py-3">
                 <label class="form-label">Email ID</label>
-                <input type="email" class="form-control" id="emailId" formcontrolName="emailId">
-                <div *ngIf="submitted && e.emailId.errors">
-                    <div *ngIf="e.emailId.errors.required" class="text-danger">Email Field is required
-                        <div *ngIf="e.emailId.errors.emailId" class="text-danger">Email must be valid</div>
-                    </div>
-                </div>
+                <input type="email" class="form-control" id="emailId" formControlName="emailId">
             </div>
             <div class="py-3">
                 <label class="form-label">Mobile no</label>
-                <input type="number" class="form-control" id="mobileNo" formcontrolName="mobileNo">
-                <div *ngIf="submitted && e.mobileNo.errors">
-                    <div *ngIf="e.mobileNo.errors.required" class="text-danger">Mobile no is required</div>
-                    <div *ngIf="e.mobileNo.errors.minlength" class="text-danger">Mobile no should be valid</div>
-                </div>
+                <input type="number" class="form-control" id="mobileNo" formControlName="mobileNo">
             </div>
             <div class="py-3">
                 <label class="form-label">Salary</label>
-                <input type="number" class="form-control" id="salary" formcontrolName="salary">
-                <div *ngIf="submitted && e.salary.errors">
-                    <div *ngIf="e.salary.errors.required" class="text-danger">Salary is required</div>
-                </div>
+                <input type="number" class="form-control" id="salary" formControlName="salary">
             </div>
-            <div class="text-end">
-                <span class="px-4 pe-0">
-                    <button type="submit" class="btn btn-secondary px-3">Add</button>
-                </span>
-                <span class="px-3 pe-0">
-                    <button type="submit" class="btn btn-danger">Cancel</button>
-                </span>
-            </div>
+            
         </div>
     </form>
+    <div class="text-end">
+        <span class="px-4 pe-0">
+            <button type="button" class="btn btn-secondary px-3"(click)='postEmployee()'>Add</button>
+        </span>
+        <span class="px-3 pe-0">
+            <button type="button" class="btn btn-danger">Cancel</button>
+        </span>
+    </div>
 </ng-template>

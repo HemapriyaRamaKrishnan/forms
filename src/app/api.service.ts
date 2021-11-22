@@ -10,15 +10,11 @@ export class ApiService {
   constructor(private http :HttpClient) { }
   postEmployee(data :any){
     return this.http.post("http://localhost:3000/posts" ,data)
-    .pipe(map((res :any)=>{
-      return res;
-    }))
+    // .pipe(map((res :any)=>{
+    //   return res;
   }
   getEmployee(){
-    return this.http.get("http://localhost:3000/posts",)
-    .pipe(map((res:any) =>{
-      return res;
-    }))
+    return this.http.get("http://localhost:3000/posts")
   }
   updateEmployee( data:any ,id:number){
     return this.http.put("http://localhost:3000/posts" +id,data)
